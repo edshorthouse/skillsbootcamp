@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bootcamp Postcode Map</title>
+    <title>Skills Bootcamp Postcode Map</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <style>
         #map {
@@ -57,12 +57,18 @@
             z-index: 1000;
         }
     </style>
+	
+	    <!-- Favicon Links -->
+    <link rel="icon" type="image/png" sizes="32x32" href="https://www.suffolk.gov.uk/asset-library/meta/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://www.suffolk.gov.uk/asset-library/meta/favicon-16x16.png">
+    <link rel="shortcut icon" href="https://www.suffolk.gov.uk/asset-library/meta/favicon.ico" type="image/x-icon">
+	
 </head>
 <body>
-    <h1>Bootcamp Postcode Map</h1>
-    <p>Upload Bootcamp Excel file. Postcodes will be automatically corrected or logged for review.</p>
+    <h1>Skills Bootcamp Postcode Map</h1>
+    <p>Upload Skills Bootcamp Excel file below. To refresh the data, press "Upload".</p>
     <input type="file" id="fileInput" accept=".xlsx" />
-    <button id="uploadBtn">Upload and Visualize</button>
+    <button id="uploadBtn">Upload</button>
 
     <label for="dataSourceToggle">Data Source:</label>
     <select id="dataSourceToggle">
