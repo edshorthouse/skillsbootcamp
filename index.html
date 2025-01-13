@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootcamp Postcode Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        #map {
+            height: 600px;
+            width: 100%;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        #loadingOverlay {
+            display: none; /* Hidden by default */
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Translucent black */
+            color: white;
+            font-size: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 500; /* Ensure it appears above map content but below the page UI */
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            font-size: 24px;
+        }
+
+        input, button, select {
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        .data-overlay {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bootcamp Postcode Map</h1>
+    <p>Upload Bootcamp Excel file. Postcodes will be automatically corrected or logged for review.</p>
+    <input type="file" id="fileInput" accept=".xlsx" />
+    <button id="uploadBtn">Upload and Visualize</button>
+
+    <label for="dataSourceToggle">Data Source:</label>
+    <select id="dataSourceToggle">
+        <option value="worksheet1_columnG">Employer Engagement</option>
+        <option value="worksheet2_columnF">Applicant Information</option>
+        <option value="worksheet3">Course Participants</option>
+    </select>
+
+    <label for="dataDetailToggle">Data Detail:</label>
+    <select id="dataDetailToggle">
+        <option value="" disabled selected>Select Detail</option>
+    </select>
+
+    <label for="viewToggle">View Type:</label>
+    <select id="viewToggle">
+        <option value="pins">Pins</option>
+        <option value="heatmap">Heatmap</option>
+    </select>
+
+    <div id="map">
+        <div id="loadingOverlay">Loading...</div>
+    </div>
+    <div class="data-overlay" id="dataOverlay">
+        Valid Data Points: 0<br>
+        Missing Data Points: 0<br>
+        Missing Participants: 0
+    </div>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js"></script>
+    <script src="bootcamp.js"></script>
+</body>
+</html>
