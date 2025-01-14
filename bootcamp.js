@@ -273,7 +273,7 @@ function getPostcodes(workbook) {
                 }));
 
             const participants = XLSX.utils.sheet_to_json(worksheet3, { header: 1 })
-                .filter(row => row[49] && row[49] !== "NA") // Column AX (index 49) is non-blank and not "NA"
+                .filter(row => row[49] && row[49] !== "N/A") // Column AX (index 49) is non-blank and not "N/A"
                 .map(row => row.slice(0, 4).join('|')); // Combine columns A, B, C, D as a unique key
 
             const matchedPostcodes = applicants
@@ -286,7 +286,7 @@ function getPostcodes(workbook) {
         if (detail === "the location of the employer that supported the Milestone 3 achievement") {
             // Extract column AQ (index 42) where column AX (index 49) is valid
             const employerLocations = XLSX.utils.sheet_to_json(worksheet3, { header: 1 })
-                .filter(row => row[49] && row[49] !== "NA") // Column AX (index 49) is non-blank and not "NA"
+                .filter(row => row[49] && row[49] !== "N/A") // Column AX (index 49) is non-blank and not "N/A"
                 .map(row => row[42]) // Extract column AQ (index 42)
                 .filter(Boolean); // Ensure non-empty values
 
